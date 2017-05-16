@@ -1,0 +1,1 @@
+include ':app', ':gson-2.3', ':picasso-2.5.2', ':EventBus-2.4.0', ':xutils'
