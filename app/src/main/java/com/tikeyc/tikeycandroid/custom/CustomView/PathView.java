@@ -53,34 +53,6 @@ public class PathView extends RelativeLayout {
 
     }
 
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-
-        final ArrayList<Integer> iconImageNames = new ArrayList<>();
-        final ArrayList<String> iconsTitles = new ArrayList<>();
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconsTitles.add("test1");
-        iconsTitles.add("test2");
-        iconsTitles.add("test3");
-        iconsTitles.add("test4");
-        iconsTitles.add("test5");
-        Handler handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-
-//                setPath();
-//                startAnimatorPath(fab, "fab", path);
-                setShowPathIcons(iconImageNames,iconsTitles);
-            }
-        };
-        handler.sendEmptyMessageDelayed(0, (long) 1);
-    }
 
     public void setShowPathIcons(ArrayList<Integer> iconImageNames, ArrayList<String> iconsTitles) {
 
