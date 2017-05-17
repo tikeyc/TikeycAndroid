@@ -1,5 +1,9 @@
 package com.tikeyc.tikeycandroid.custom.AnimatorPath;
 
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.RectF;
+
 /**
  * Created by zhengliang on 2016/10/15 0015.
  * 记录view移动动作的坐标点
@@ -33,6 +37,29 @@ public class PathPoint {
     public float mContorl1X,mContorl1Y;
     //操作符
     public int mOperation;
+
+    /**
+     * 圆操作
+     */
+    public static final int CIRCLE=4;
+    public RectF oval;
+    public float startAngle,sweepAngle;
+    /**
+     * 圆操
+     * int radius = getWidth() - 150;
+     Rect rect = new Rect(0,100,radius,radius);
+     RectF oval = new RectF(rect);
+     path.addArc(oval,90,-180);
+     */
+    public PathPoint(int mOperation, RectF oval, float startAngle, float sweepAngle) {
+        this.oval = oval;
+        this.startAngle = startAngle;
+        this.sweepAngle = sweepAngle;
+        this.mOperation = mOperation;
+    }
+    public static PathPoint addArc(RectF oval, float startAngle, float sweepAngle){
+        return new PathPoint(CIRCLE, oval, startAngle, sweepAngle);
+    }
 
     /**
      * Line/Move都通过该构造函数来创建

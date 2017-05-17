@@ -1,5 +1,7 @@
 package com.tikeyc.tikeycandroid.custom.AnimatorPath;
 
+import android.graphics.RectF;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +14,10 @@ import java.util.List;
 public class AnimatorPath {
     //一系列的轨迹记录动作
     private List<PathPoint> mPoints = new ArrayList<>();
+
+    public void addArc(RectF oval, float startAngle, float sweepAngle){
+        mPoints.add(PathPoint.addArc(oval,startAngle,sweepAngle));
+    }
 
     /**
      * 移动位置到:
