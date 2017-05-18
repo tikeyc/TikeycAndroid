@@ -7,10 +7,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by zhengliang on 2016/10/15 0015.
- * 客户端使用类,记录一系列的不同移动轨迹
+ * Created by public1 on 2017/5/17.
  */
-
 public class AnimatorPath {
     //一系列的轨迹记录动作
     private List<PathPoint> mPoints = new ArrayList<>();

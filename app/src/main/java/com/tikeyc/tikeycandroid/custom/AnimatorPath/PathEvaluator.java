@@ -1,13 +1,11 @@
 package com.tikeyc.tikeycandroid.custom.AnimatorPath;
 
-
+/**
+ * Created by public1 on 2017/5/17.
+ */
 import android.animation.TypeEvaluator;
 import android.graphics.PointF;
 
-/**
- * Created by zhengliang on 2016/10/15 0015.
- * 估值器类,实现坐标点的计算
- */
 
 public class PathEvaluator implements TypeEvaluator<PathPoint> {
 

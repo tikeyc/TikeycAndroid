@@ -118,7 +118,7 @@ public class TPathIcon extends LinearLayout {
 //        setTranslationY(newLoc.mY);
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
-        layoutParams.leftMargin = (int) (newLoc.mX - 150);//根据具体的icon设置的大小减去相应宽度
+        layoutParams.leftMargin = (int) (newLoc.mX - 100);//根据具体的icon设置的大小减去相应宽度
         layoutParams.topMargin = (int) (newLoc.mY - 60);//根据具体的icon设置的大小减去相应高度
         setLayoutParams(layoutParams);
     }

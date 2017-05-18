@@ -58,11 +58,11 @@ public class THomeFragment extends Fragment  {
 
         final ArrayList<Integer> iconImageNames = new ArrayList<>();
         final ArrayList<String> iconsTitles = new ArrayList<>();
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
-        iconImageNames.add(R.mipmap.path_animation_icon);
+        iconImageNames.add(R.mipmap.test1);
+        iconImageNames.add(R.mipmap.test2);
+        iconImageNames.add(R.mipmap.test3);
+        iconImageNames.add(R.mipmap.test4);
+        iconImageNames.add(R.mipmap.test5);
         iconsTitles.add("test1");
         iconsTitles.add("test2");
         iconsTitles.add("test3");

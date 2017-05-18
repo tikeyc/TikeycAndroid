@@ -213,7 +213,7 @@ public class TMainFragmentTabActivity extends FragmentActivity {
             mAddTab.setTextColor(Color.RED);
             if (mAddPressed == null) {
                 mAddPressed = getResources().getDrawable(
-                        R.mipmap.tab_add_normal);
+                        R.mipmap.tab_add_selected);
             }
             drawable = mAddPressed;
         } else {

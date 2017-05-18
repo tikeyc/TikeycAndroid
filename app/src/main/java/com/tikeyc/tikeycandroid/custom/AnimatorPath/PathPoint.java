@@ -5,10 +5,8 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 
 /**
- * Created by zhengliang on 2016/10/15 0015.
- * 记录view移动动作的坐标点
+ * Created by public1 on 2017/5/17.
  */
-
 public class PathPoint {
     /**
      * 起始点操作

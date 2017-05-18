@@ -28,11 +28,8 @@ import com.tikeyc.tikeycandroid.custom.AnimatorPath.AnimatorPath;
 import java.util.ArrayList;
 
 /**
- * 时 间: 2016/11/8 0008
- * 作 者: 郑亮
- * Q  Q : 1023007219
+ * Created by public1 on 2017/5/17.
  */
-
 public class PathView extends RelativeLayout {
 
     private Paint paint;
@@ -97,6 +94,7 @@ public class PathView extends RelativeLayout {
             icon.setPath(initPath(90,-(180/count)*(i + 1)));
             pathIcons.add(icon);
             ImageView iv = (ImageView) icon.findViewById(R.id.icon_image);
+            iv.setImageResource(iconImageNames.get(i));
             TextView tv = (TextView) icon.findViewById(R.id.icon_title);
             tv.setText(iconsTitles.get(i));
             addView(icon);
