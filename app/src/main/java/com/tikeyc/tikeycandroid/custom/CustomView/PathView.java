@@ -93,6 +93,7 @@ public class PathView extends RelativeLayout {
         int count = iconsTitles.size() + 1;
         for (int i = 0; i < iconsTitles.size(); i++) {
             TPathIcon icon = (TPathIcon) View.inflate(getContext(),R.layout.path_animation_icon, null);
+            icon.setTag(i);
             icon.setPath(initPath(90,-(180/count)*(i + 1)));
             pathIcons.add(icon);
             ImageView iv = (ImageView) icon.findViewById(R.id.icon_image);
@@ -100,7 +101,16 @@ public class PathView extends RelativeLayout {
             tv.setText(iconsTitles.get(i));
             addView(icon);
             icon.setVisibility(INVISIBLE);
-            Log.e("TAG","icon.getWidth():" + icon.getWidth());
+
+            icon.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e("TIKEYC","PathIcon Click");
+                    if (pathIconClickListen != null) {
+                        pathIconClickListen.onPathIconClick((TPathIcon) view);
+                    }
+                }
+            });
         }
 
         startAnimation();
@@ -137,7 +147,15 @@ public class PathView extends RelativeLayout {
         }
     }
 
+    ///////////
+    private TPathIconClickListen pathIconClickListen;
 
+    public void addPathIconClickListener(PathView.TPathIconClickListen listener) {
+        pathIconClickListen = listener;
+    }
 
+    public interface TPathIconClickListen {
+        void onPathIconClick(TPathIcon pathIcon);
+    }
 
 }

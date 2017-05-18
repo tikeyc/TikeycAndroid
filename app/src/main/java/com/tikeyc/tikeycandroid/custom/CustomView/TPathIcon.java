@@ -47,6 +47,11 @@ public class TPathIcon extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+    }
+
     public void startAnimatorPath(long duration, long startDelay) {
         if (path == null)return;
         ObjectAnimator anim = ObjectAnimator.ofObject(this, Animation_Property_Name, new PathEvaluator(), path.getPoints().toArray());
@@ -113,8 +118,8 @@ public class TPathIcon extends LinearLayout {
 //        setTranslationY(newLoc.mY);
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
-        layoutParams.leftMargin = (int) (newLoc.mX - 150);
-        layoutParams.topMargin = (int) (newLoc.mY - 60);
+        layoutParams.leftMargin = (int) (newLoc.mX - 150);//根据具体的icon设置的大小减去相应宽度
+        layoutParams.topMargin = (int) (newLoc.mY - 60);//根据具体的icon设置的大小减去相应高度
         setLayoutParams(layoutParams);
     }
 

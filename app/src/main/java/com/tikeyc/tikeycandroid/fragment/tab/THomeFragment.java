@@ -1,10 +1,13 @@
 package com.tikeyc.tikeycandroid.fragment.tab;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.activity.TImageListActivity;
 import com.tikeyc.tikeycandroid.custom.AnimatorPath.AnimatorPath;
 import com.tikeyc.tikeycandroid.custom.CustomView.PathView;
+import com.tikeyc.tikeycandroid.custom.CustomView.TPathIcon;
 
 
 import java.util.ArrayList;
@@ -42,6 +47,8 @@ public class THomeFragment extends Fragment  {
         mView = (LinearLayout) inflater.inflate(R.layout.home_fragment,container,false);
 
         initView();
+
+        setListen();
 
         return mView;
     }
@@ -77,5 +84,15 @@ public class THomeFragment extends Fragment  {
     }
 
 
+    private void setListen() {
+        pathView.addPathIconClickListener(new PathView.TPathIconClickListen() {
+            @Override
+            public void onPathIconClick(TPathIcon pathIcon) {
+                Log.e("TIKEYC","onPathIconClick:" + pathIcon.getTag());
+                Intent intent = new Intent(getContext(), TImageListActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 }
