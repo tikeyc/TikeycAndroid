@@ -1,5 +1,6 @@
 package com.tikeyc.tikeycandroid.custom.CustomView;
 
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Rect;
@@ -46,14 +47,37 @@ public class TPathIcon extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public void startAnimatorPath() {
+    public void startAnimatorPath(long duration, long startDelay) {
+        if (path == null)return;
         ObjectAnimator anim = ObjectAnimator.ofObject(this, Animation_Property_Name, new PathEvaluator(), path.getPoints().toArray());
         anim.setInterpolator(new DecelerateInterpolator());
-        anim.setDuration(3000);
+        anim.setDuration(duration);
 //        anim.setRepeatCount(4);
 //        anim.setRepeatMode(ObjectAnimator.REVERSE);
-        anim.start();
+        anim.setStartDelay(startDelay);
 
+        anim.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                setVisibility(VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+        anim.start();
     }
 
     /**
@@ -85,15 +109,13 @@ public class TPathIcon extends LinearLayout {
      * @param newLoc
      */
     public void setAnimationPropertyName(PathPoint newLoc) {
-//        fab.setTranslationX(newLoc.mX);
-//        fab.setTranslationY(newLoc.mY);
+//        setTranslationX(newLoc.mX);
+//        setTranslationY(newLoc.mY);
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
-        layoutParams.leftMargin = (int) (newLoc.mX - layoutParams.width/2);
-        layoutParams.topMargin = (int) (newLoc.mY - layoutParams.height/2);
+        layoutParams.leftMargin = (int) (newLoc.mX - 150);
+        layoutParams.topMargin = (int) (newLoc.mY - 60);
         setLayoutParams(layoutParams);
-
-        Log.e("TAG","newLoc.mX:" + newLoc.mX + "  " + "newLoc.mY:" + newLoc.mY + "  " + getParent());
     }
 
 

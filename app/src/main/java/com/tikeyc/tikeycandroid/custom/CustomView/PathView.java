@@ -48,45 +48,12 @@ public class PathView extends RelativeLayout {
         initView();
     }
 
+
     @Override
-    protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
-
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
     }
 
-
-    public void setShowPathIcons(ArrayList<Integer> iconImageNames, ArrayList<String> iconsTitles) {
-
-        this.iconImageNames = iconImageNames;
-        this.iconsTitles = iconsTitles;
-        int count = iconsTitles.size() + 1;
-        for (int i = 0; i < iconsTitles.size(); i++) {
-            TPathIcon icon = (TPathIcon) View.inflate(getContext(),R.layout.path_animation_icon, null);
-            icon.setPath(initPath(90,-(180/count)*(i + 1)));
-            pathIcons.add(icon);
-            ImageView iv = (ImageView) icon.findViewById(R.id.icon_image);
-            TextView tv = (TextView) icon.findViewById(R.id.icon_title);
-            tv.setText(iconsTitles.get(i));
-            addView(icon);
-            Log.e("TAG","icon.getWidth():" + icon.getWidth());
-        }
-
-        startAnimation();
-    }
-
-    /*设置动画路径*/
-    public AnimatorPath initPath(float startAngle, float sweepAngle){
-        AnimatorPath path = new AnimatorPath();
-//        path.moveTo(0,0);
-//        path.lineTo(400,400);
-//        path.secondBesselCurveTo(600, 200, 800, 400);
-//        path.thirdBesselCurveTo(100,600,900,1000,200,1200);
-        int radius = getWidth() - 400;
-        Rect rect = new Rect(-radius,getHeight()/2 - radius,radius,getHeight()/2 + radius);
-        RectF oval = new RectF(rect);
-        path.addArc(oval,startAngle,sweepAngle);
-//        path.addArc(oval,90,-180);
-        return path;
-    }
 
     private void initView() {
         paint = new Paint();
@@ -111,9 +78,7 @@ public class PathView extends RelativeLayout {
 //        path.lineTo(460,460);
 //        path.quadTo(660, 260, 860, 460); //订单
 //        path.cubicTo(160,660,960,1060,260,1260);
-        int radius = getWidth() - 400;
-        Rect rect = new Rect(-radius,getHeight()/2 - radius,radius,getHeight()/2 + radius);
-        RectF oval = new RectF(rect);
+        RectF oval = getOval();
         path.addArc(oval,90,-180);
         canvas.drawPath(path,paint);
     }
@@ -121,12 +86,53 @@ public class PathView extends RelativeLayout {
 
     ///////////
 
+    public void setShowPathIcons(ArrayList<Integer> iconImageNames, ArrayList<String> iconsTitles) {
+
+        this.iconImageNames = iconImageNames;
+        this.iconsTitles = iconsTitles;
+        int count = iconsTitles.size() + 1;
+        for (int i = 0; i < iconsTitles.size(); i++) {
+            TPathIcon icon = (TPathIcon) View.inflate(getContext(),R.layout.path_animation_icon, null);
+            icon.setPath(initPath(90,-(180/count)*(i + 1)));
+            pathIcons.add(icon);
+            ImageView iv = (ImageView) icon.findViewById(R.id.icon_image);
+            TextView tv = (TextView) icon.findViewById(R.id.icon_title);
+            tv.setText(iconsTitles.get(i));
+            addView(icon);
+            icon.setVisibility(INVISIBLE);
+            Log.e("TAG","icon.getWidth():" + icon.getWidth());
+        }
+
+        startAnimation();
+    }
+
+    private RectF getOval() {
+        int radius = getWidth() - 500;
+        Rect rect = new Rect(-radius,getHeight()/2 - radius,radius,getHeight()/2 + radius);
+        RectF oval = new RectF(rect);
+        return oval;
+    }
+
+    /*设置动画路径*/
+    public AnimatorPath initPath(float startAngle, float sweepAngle){
+        AnimatorPath path = new AnimatorPath();
+//        path.moveTo(0,0);
+//        path.lineTo(400,400);
+//        path.secondBesselCurveTo(600, 200, 800, 400);
+//        path.thirdBesselCurveTo(100,600,900,1000,200,1200);
+        RectF oval = getOval();
+        path.addArc(oval,startAngle,sweepAngle);
+//        path.addArc(oval,90,-180);
+        return path;
+    }
 
     public void startAnimation() {
-
-        for (int i = 0 ; i < pathIcons.size(); i++) {
+        int count = pathIcons.size();
+        for (int i = count - 1 ; i >= 0; --i) {
             TPathIcon pathIcon = pathIcons.get(i);
-            pathIcon.startAnimatorPath();
+            long duration = 800;
+            long startDelay = (count - 1 - i) * (duration/count);
+            pathIcon.startAnimatorPath(duration - startDelay,startDelay);
 
         }
     }
