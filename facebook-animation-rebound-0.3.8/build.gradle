@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('rebound-0.3.8.jar'))

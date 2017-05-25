@@ -8,8 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.base.TBaseActivity;
 
-public class TLuanchActivity extends Activity {
+public class TLuanchActivity extends TBaseActivity {
 
     private Handler handler = new Handler(){
         @Override
@@ -18,6 +19,7 @@ public class TLuanchActivity extends Activity {
 
             Intent intent = new Intent(TLuanchActivity.this,TLoginActivity.class);
             startActivity(intent);
+            finish();
         }
     };
 

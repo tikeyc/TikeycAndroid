@@ -1,6 +1,5 @@
 package com.tikeyc.tikeycandroid.fragment.tab;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,8 +16,8 @@ import android.widget.TextView;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.activity.TImageListActivity;
 import com.tikeyc.tikeycandroid.custom.AnimatorPath.AnimatorPath;
-import com.tikeyc.tikeycandroid.custom.CustomView.PathView;
-import com.tikeyc.tikeycandroid.custom.CustomView.TPathIcon;
+import com.tikeyc.tikeycandroid.custom.TPathCustomView.PathView;
+import com.tikeyc.tikeycandroid.custom.TPathCustomView.TPathIcon;
 
 
 import java.util.ArrayList;

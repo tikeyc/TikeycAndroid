@@ -17,7 +17,6 @@ public class MyApplication extends Application {
         //初始化xUtils
         x.Ext.init(this);
 
-
     }
 
 

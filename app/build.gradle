@@ -30,4 +30,6 @@ dependencies {
     compile project(':picasso-2.5.2')
     compile project(':gson-2.3')
     compile project(':xutils')
+    compile project(':BaseRecyclerViewAdapterHelper')
+    compile project(':facebook-animation-rebound-0.3.8')
 }

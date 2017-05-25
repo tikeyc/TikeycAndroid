@@ -9,8 +9,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/BaseRecyclerViewAdapterHelper" />
             <option value="$PROJECT_DIR$/EventBus-2.4.0" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/facebook-animation-rebound-0.3.8" />
             <option value="$PROJECT_DIR$/gson-2.3" />
             <option value="$PROJECT_DIR$/picasso-2.5.2" />
             <option value="$PROJECT_DIR$/xutils" />

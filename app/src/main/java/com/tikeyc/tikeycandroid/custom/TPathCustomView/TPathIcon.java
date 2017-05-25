@@ -1,12 +1,9 @@
-package com.tikeyc.tikeycandroid.custom.CustomView;
+package com.tikeyc.tikeycandroid.custom.TPathCustomView;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;

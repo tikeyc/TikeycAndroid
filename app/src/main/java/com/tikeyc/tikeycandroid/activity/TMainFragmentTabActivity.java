@@ -2,13 +2,18 @@ package com.tikeyc.tikeycandroid.activity;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v7.app.ActionBar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.fragment.tab.THomeFragment;
@@ -47,12 +52,21 @@ public class TMainFragmentTabActivity extends FragmentActivity {
 
     private FrameLayout realtabcontent;
     private FragmentTabHost tabhost;
+    private int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main_fragment_tab);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
 
         MyApplication myApplication = (MyApplication) getApplication();
 
@@ -126,6 +140,7 @@ public class TMainFragmentTabActivity extends FragmentActivity {
         @Override
         public void onTabChanged(String tabId) {
             if (TAB_HOME.equals(tabId)) {
+                position = 0;
                 setHomeText(true);
                 setMessageText(false);
                 setAddText(false);
@@ -133,6 +148,7 @@ public class TMainFragmentTabActivity extends FragmentActivity {
                 return;
             }
             if (TAB_MESSAGE.equals(tabId)) {
+                position = 1;
                 setHomeText(false);
                 setMessageText(true);
                 setAddText(false);
@@ -140,6 +156,7 @@ public class TMainFragmentTabActivity extends FragmentActivity {
                 return;
             }
             if (TAB_RELEASE.equals(tabId)) {
+                position = 2;
                 setHomeText(false);
                 setMessageText(false);
                 setAddText(true);
@@ -147,6 +164,7 @@ public class TMainFragmentTabActivity extends FragmentActivity {
                 return;
             }
             if (TAB_USER.equals(tabId)) {
+                position = 3;
                 setHomeText(false);
                 setMessageText(false);
                 setAddText(false);
@@ -255,6 +273,41 @@ public class TMainFragmentTabActivity extends FragmentActivity {
             mUserTab.setCompoundDrawables(null, drawable, null, null);
         }
 
+    }
+
+
+
+    private boolean isExit = false;
+
+    /**设置2秒内点击手机系统返回按钮退出APP
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (position != 0) {
+                position = 0;
+                //如果不是在第一页 则回到第一页
+                listener.onTabChanged(TAB_HOME);
+                return true;
+            } else if (!isExit) {
+                isExit = true;
+                Toast.makeText(this,"再按一次退出",Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isExit = false;
+                    }
+                },2000);
+                return true;
+            }
+        }
+
+        return super.onKeyUp(keyCode, event);
     }
 
 }

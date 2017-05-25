@@ -7,6 +7,16 @@
     tools:context="com.tikeyc.tikeycandroid.activity.TImageListActivity">
 
 
-    <include layout="@layout/navigationbar"></include>
+    <include
+        android:id="@+id/navigationbar"
+        layout="@layout/navigationbar">
+    </include>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_below="@+id/navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
 
 </RelativeLayout>

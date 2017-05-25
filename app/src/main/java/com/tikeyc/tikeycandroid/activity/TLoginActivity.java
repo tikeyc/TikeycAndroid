@@ -11,9 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.base.TBaseActivity;
 import com.tikeyc.tikeycandroid.myApplication.MyApplication;
 
-public class TLoginActivity extends Activity {
+public class TLoginActivity extends TBaseActivity {
 
 
 
@@ -55,7 +56,7 @@ public class TLoginActivity extends Activity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         Intent intent = new Intent(this, TMainFragmentTabActivity.class);
-        TLoginActivity.this.startActivity(intent);
-        TLoginActivity.this.finish();
+        startActivity(intent);
+        finish();
     }
 }
