@@ -78,7 +78,6 @@ public class TPageControl extends LinearLayout {
         if (pageCircleList == null)return;
         for (int i = 0; i < this.pageCircleList.size(); i++) {
             TextView circle = this.pageCircleList.get(i);
-//            circle.setAlpha((i == page) ? 1.0f : 0.3f);
             circle.setTextColor((i == currentPage) ? selectedColor : normalColor);
         }
     }

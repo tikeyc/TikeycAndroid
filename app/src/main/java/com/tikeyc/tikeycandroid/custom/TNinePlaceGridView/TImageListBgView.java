@@ -66,6 +66,11 @@ public class TImageListBgView extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    /**因此View添加在Window，点击手机返回按钮无法响应，
+     * 重写此方法可以处理点击手机返回的逻辑处理，缩小图片到原位置
+     * @param event
+     * @return
+     */
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {//2-4
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
@@ -179,8 +184,6 @@ public class TImageListBgView extends RelativeLayout {
 //        });
     }
 
-
-
     private void initPageControl() {
         pageControl = new TPageControl(getContext(),null);
         pageControl.setPageNumber(imageIds.size());
@@ -190,6 +193,9 @@ public class TImageListBgView extends RelativeLayout {
         addView(pageControl,layoutParams);
     }
 
+    /**放大缩小动画
+     * @param state
+     */
     public void startTransform(final int state) {
 
         final int duration = 300;
