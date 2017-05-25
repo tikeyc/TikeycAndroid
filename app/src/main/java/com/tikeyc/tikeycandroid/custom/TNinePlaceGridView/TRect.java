@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.custom.TImageView;
+package com.tikeyc.tikeycandroid.custom.TNinePlaceGridView;
 
 /**
  * Created by public1 on 2017/5/23.

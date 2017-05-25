@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.custom.TImageView;
+package com.tikeyc.tikeycandroid.custom.TNinePlaceGridView;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,11 +1,9 @@
-package com.tikeyc.tikeycandroid.custom.TImageView;
+package com.tikeyc.tikeycandroid.custom.TNinePlaceGridView;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.tikeyc.tikeycandroid.utils.TKCUtils;
 
 import java.util.ArrayList;
 import java.util.List;

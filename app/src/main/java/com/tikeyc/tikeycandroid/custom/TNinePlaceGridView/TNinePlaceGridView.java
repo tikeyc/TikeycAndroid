@@ -1,9 +1,6 @@
-package com.tikeyc.tikeycandroid.custom.TImageView;
+package com.tikeyc.tikeycandroid.custom.TNinePlaceGridView;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -71,7 +68,7 @@ public class TNinePlaceGridView extends GridView {
 
     private void init() {
         Log.e("TAG","init getWidth():" + getWidth());
-        setBackgroundColor(Color.RED);
+//        setBackgroundColor(Color.RED);
         setNumColumns(3);
         setHorizontalSpacing(itemGap);
         setVerticalSpacing(itemGap);

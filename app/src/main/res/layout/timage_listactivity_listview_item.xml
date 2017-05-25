@@ -10,8 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
-        <ImageView
+        <com.tikeyc.tikeycandroid.utils.CircleImageView
             android:id="@+id/imageViewIcon"
+            android:background="@drawable/corners_bg"
             android:src="@mipmap/glenceluanch"
             android:layout_marginLeft="8dp"
             android:layout_centerVertical="true"
@@ -29,7 +30,7 @@
 
     </RelativeLayout>
 
-    <com.tikeyc.tikeycandroid.custom.TImageView.TNinePlaceGridView
+    <com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.TNinePlaceGridView
         android:id="@+id/ninePlaceGridView"
         android:layout_below="@+id/userInfoSuperView"
         android:layout_marginLeft="58dp"
@@ -38,7 +39,7 @@
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.tikeyc.tikeycandroid.custom.TImageView.TNinePlaceGridView>
+    </com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.TNinePlaceGridView>
 
 
 </RelativeLayout>

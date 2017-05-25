@@ -1,17 +1,14 @@
-package com.tikeyc.tikeycandroid.custom.TImageView;
+package com.tikeyc.tikeycandroid.custom.TNinePlaceGridView;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
-import com.tikeyc.tikeycandroid.R;
-import com.tikeyc.tikeycandroid.custom.TImageView.photoview.OnViewTapListener;
-import com.tikeyc.tikeycandroid.custom.TImageView.photoview.PhotoView;
+import com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.photoview.OnViewTapListener;
+import com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.photoview.PhotoView;
 
 import org.xutils.common.util.DensityUtil;
 

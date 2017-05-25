@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.custom.TImageView;
+package com.tikeyc.tikeycandroid.custom.TNinePlaceGridView;
 
 import android.animation.Animator;
 import android.animation.PropertyValuesHolder;
@@ -15,16 +15,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.GridView;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.squareup.picasso.Picasso;
-import com.tikeyc.tikeycandroid.utils.TKCUtils;
+import com.tikeyc.tikeycandroid.custom.view.TPageControl;
 
 import org.xutils.common.util.DensityUtil;
 
@@ -46,6 +42,7 @@ public class TImageListBgView extends RelativeLayout {
     private LinearLayout gridViewBgView;
     private GridView gridView;
     private TPageHorizatalScrollView horizontalScrollView;
+    private TPageControl pageControl;
 
     public TImageListBgView(Context context, TRect originalRect,Integer imageId,List<Integer> imageIds,int currentIndex) {
         super(context);
@@ -88,6 +85,19 @@ public class TImageListBgView extends RelativeLayout {
 
     private WindowManager windowManager;
     private void initSubViews() {
+        //
+        initImageListBgView();
+        //
+        initAnimationIV();
+        //
+        initHorizontalScrollView();
+        //
+        initGridView();
+        //
+        initPageControl();
+    }
+
+    private void initImageListBgView() {
         Activity activity = (Activity) getContext();
         windowManager = activity.getWindowManager();
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
@@ -98,21 +108,23 @@ public class TImageListBgView extends RelativeLayout {
         layoutParams.format = PixelFormat.RGBA_8888;//让背景透明，放大过程可以看到当前界面
         layoutParams.verticalMargin = 0;
         windowManager.addView(this,layoutParams);
-        ///////
+    }
 
+    private void initAnimationIV() {
         animationIV = new ImageView(getContext());
 //        imageView.setBackgroundColor(Color.RED);
         animationIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(originalRect.getWidth(),originalRect.getHeight());
+        LayoutParams params = new LayoutParams(originalRect.getWidth(),originalRect.getHeight());
         params.leftMargin = originalRect.getLeft();
         params.topMargin = originalRect.getTop();
         addView(animationIV,params);
 //        Picasso.with(getContext()).load("http://ww2.sinaimg.cn/mw690/9e6995c9gw1f2uu70bzohj209q06g3yw.jpg").into(animationIV);
         animationIV.setImageResource(imageId);
+    }
 
-        //
+    private void initHorizontalScrollView() {
         horizontalScrollView = new TPageHorizatalScrollView(getContext());
-        RelativeLayout.LayoutParams hsLayoutParams = new LayoutParams(DensityUtil.getScreenWidth(),DensityUtil.getScreenHeight());
+        LayoutParams hsLayoutParams = new LayoutParams(DensityUtil.getScreenWidth(),DensityUtil.getScreenHeight());
         hsLayoutParams.leftMargin = 0;
         hsLayoutParams.topMargin = 0;
         addView(horizontalScrollView,hsLayoutParams);
@@ -129,13 +141,18 @@ public class TImageListBgView extends RelativeLayout {
                 Log.e("TAG","currentIndex" + currentIndex);
                 animationIV.setImageResource(imageIds.get(currentIndex));
                 originalRect = originalRects.get(currentIndex);
+                pageControl.setCurrentPage(currentIndex);
             }
         });
-        //
         int numColumns = imageIds.size();
         gridViewBgView = new LinearLayout(getContext());
         LinearLayout.LayoutParams testParams = new LinearLayout.LayoutParams(DensityUtil.getScreenWidth()*numColumns,DensityUtil.getScreenHeight());
         horizontalScrollView.addView(gridViewBgView,testParams);
+    }
+
+
+    private void initGridView() {
+        int numColumns = imageIds.size();
         //
         gridView = new GridView(getContext());
         gridView.setNumColumns(numColumns);
@@ -160,9 +177,18 @@ public class TImageListBgView extends RelativeLayout {
 //                startTransform(TScallImageView.STATE_TRANSFORM_OUT);
 //            }
 //        });
-
     }
 
+
+
+    private void initPageControl() {
+        pageControl = new TPageControl(getContext(),null);
+        pageControl.setPageNumber(imageIds.size());
+        pageControl.setSelectedColor(Color.RED);
+        LayoutParams layoutParams = new LayoutParams(DensityUtil.getScreenWidth(),40);
+        layoutParams.topMargin = DensityUtil.getScreenHeight() - 100;
+        addView(pageControl,layoutParams);
+    }
 
     public void startTransform(final int state) {
 
@@ -174,6 +200,7 @@ public class TImageListBgView extends RelativeLayout {
             setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             mState = TScallImageView.STATE_TRANSFORM_IN;
             gridViewBgView.setVisibility(INVISIBLE);
+            pageControl.setVisibility(INVISIBLE);
 //            PropertyValuesHolder scaleHolder = PropertyValuesHolder.ofFloat("scale", mTransfrom.startScale, mTransfrom.endScale);
             PropertyValuesHolder leftHolder = PropertyValuesHolder.ofFloat("left",originalRect.getLeft(), 0);
             PropertyValuesHolder topHolder = PropertyValuesHolder.ofFloat("top", originalRect.getTop(), 0);
@@ -184,6 +211,7 @@ public class TImageListBgView extends RelativeLayout {
         } else {
 //            setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
             gridViewBgView.setVisibility(INVISIBLE);
+            pageControl.setVisibility(INVISIBLE);
             animationIV.setVisibility(VISIBLE);
             setBackgroundColor(Color.TRANSPARENT);
             mState = TScallImageView.STATE_TRANSFORM_OUT;
@@ -244,6 +272,7 @@ public class TImageListBgView extends RelativeLayout {
                 if (mState == TScallImageView.STATE_TRANSFORM_IN) {
                     horizontalScrollView.baseSmoothScrollTo(0);
                     setBackgroundColor(Color.BLACK);
+                    pageControl.setVisibility(VISIBLE);
                     Handler handler = new Handler(){
                         @Override
                         public void handleMessage(Message msg) {
