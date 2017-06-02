@@ -4,18 +4,12 @@
     android:id="@+id/activity_tuser_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.tikeyc.loveshare.fragment.tab.TUserFragment">
+    android:orientation="vertical">
 
-    <include
-        android:id="@+id/navigationbar"
-        layout="@layout/navigationbar">
-    </include>
-
-    <TextView
-        android:gravity="center"
+    <com.tikeyc.tikeycandroid.custom.ScrollView.TStretchableListView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="User"/>
+        android:layout_height="match_parent">
+    </com.tikeyc.tikeycandroid.custom.ScrollView.TStretchableListView>
 
 </LinearLayout>

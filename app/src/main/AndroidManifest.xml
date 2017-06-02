@@ -22,7 +22,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/notitle" >
+        android:theme="@style/notitle">
         <activity
             android:name=".activity.TLuanchActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -32,9 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TLoginActivity"></activity>
+        <activity android:name=".activity.TLoginActivity" />
         <activity android:name=".activity.TMainFragmentTabActivity" />
-        <activity android:name=".activity.TImageListActivity"></activity>
+        <activity android:name=".activity.TImageListActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <LinearLayout
+        android:id="@+id/item_superview"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+
+        <com.tikeyc.tikeycandroid.utils.CircleImageView
+            android:id="@+id/icon_iv"
+            android:src="@mipmap/beauty"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:id="@+id/nickName_tv"
+            android:text="昵称"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

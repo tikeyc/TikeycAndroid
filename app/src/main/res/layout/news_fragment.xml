@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include
@@ -8,10 +10,14 @@
         layout="@layout/navigationbar">
     </include>
 
-    <TextView
-        android:gravity="center"
+    <com.moxun.tagcloudlib.view.TagCloudView
+        android:id="@+id/tagCloudView_3D"
+        app:autoScrollMode="uniform"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="News"/>
+        app:lightColor="#ffff0000"
+        app:darkColor="#ff00ff00"
+        app:radiusPercent="0.5">
+    </com.moxun.tagcloudlib.view.TagCloudView>
 
 </LinearLayout>

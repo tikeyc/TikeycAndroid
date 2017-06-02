@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/3Dtagcloudlib/3Dtagcloudlib.iml" filepath="$PROJECT_DIR$/3Dtagcloudlib/3Dtagcloudlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaseRecyclerViewAdapterHelper/BaseRecyclerViewAdapterHelper.iml" filepath="$PROJECT_DIR$/BaseRecyclerViewAdapterHelper/BaseRecyclerViewAdapterHelper.iml" />
       <module fileurl="file://$PROJECT_DIR$/EventBus-2.4.0/EventBus-2.4.0.iml" filepath="$PROJECT_DIR$/EventBus-2.4.0/EventBus-2.4.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/TikeycAndroid.iml" filepath="$PROJECT_DIR$/TikeycAndroid.iml" />

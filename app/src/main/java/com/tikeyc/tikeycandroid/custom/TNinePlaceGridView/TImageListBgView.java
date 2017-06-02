@@ -295,6 +295,8 @@ public class TImageListBgView extends RelativeLayout {
                     gridViewBgView = null;
                     removeView(animationIV);
                     animationIV = null;
+                    removeView(pageControl);
+                    pageControl = null;
                     windowManager.removeView(imageListBgView[0]);
                     imageListBgView[0] = null;
                 }

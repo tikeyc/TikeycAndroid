@@ -12,7 +12,7 @@ import java.util.List;
  * Created by public1 on 2017/5/19.
  */
 
-public class TScallImageView extends ImageView {
+public class TScallImageView extends android.support.v7.widget.AppCompatImageView {
 
     public static final int STATE_NORMAL = 0;
     public static final int STATE_TRANSFORM_IN = 1;

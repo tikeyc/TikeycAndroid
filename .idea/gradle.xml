@@ -5,10 +5,11 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.14.1" />
+        <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-3.3" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/3Dtagcloudlib" />
             <option value="$PROJECT_DIR$/BaseRecyclerViewAdapterHelper" />
             <option value="$PROJECT_DIR$/EventBus-2.4.0" />
             <option value="$PROJECT_DIR$/app" />

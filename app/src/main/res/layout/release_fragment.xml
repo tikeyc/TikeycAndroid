@@ -4,18 +4,17 @@
     android:id="@+id/activity_trelease_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.tikeyc.loveshare.fragment.tab.TReleaseFragment">
+    android:orientation="vertical">
 
     <include
         android:id="@+id/navigationbar"
         layout="@layout/navigationbar">
     </include>
 
-    <TextView
-        android:gravity="center"
+    <com.tikeyc.tikeycandroid.custom.ScrollView.THorizontalListView
+        android:id="@+id/tHorizontalListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Release"/>
+        android:layout_height="200dp">
+    </com.tikeyc.tikeycandroid.custom.ScrollView.THorizontalListView>
 
 </LinearLayout>

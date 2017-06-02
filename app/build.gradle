@@ -24,12 +24,15 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    testCompile 'junit:junit:4.12'
     compile project(':EventBus-2.4.0')
     compile project(':picasso-2.5.2')
     compile project(':gson-2.3')
     compile project(':xutils')
     compile project(':BaseRecyclerViewAdapterHelper')
     compile project(':facebook-animation-rebound-0.3.8')
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile project(':3Dtagcloudlib')
 }
