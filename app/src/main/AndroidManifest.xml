@@ -35,6 +35,9 @@
         <activity android:name=".activity.TLoginActivity" />
         <activity android:name=".activity.TMainFragmentTabActivity" />
         <activity android:name=".activity.TImageListActivity" />
+        <activity android:name=".activity.echart.TEchartTypeListActivity" />
+        <activity android:name=".activity.echart.TLineChartActivity" />
+        <activity android:name=".activity.echart.TBarChartActivity"></activity>
     </application>
 
 </manifest>

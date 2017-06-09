@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.utils;
+package com.tikeyc.tikeycandroid.libs;
 
 import android.content.Context;
 import android.content.res.TypedArray;

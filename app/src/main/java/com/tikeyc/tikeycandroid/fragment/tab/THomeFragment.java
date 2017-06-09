@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.activity.echart.TEchartTypeListActivity;
 import com.tikeyc.tikeycandroid.activity.TImageListActivity;
 import com.tikeyc.tikeycandroid.custom.AnimatorPath.AnimatorPath;
 import com.tikeyc.tikeycandroid.custom.TPathCustomView.PathView;
@@ -72,8 +73,6 @@ public class THomeFragment extends Fragment  {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
 
-//                setPath();
-//                startAnimatorPath(fab, "fab", path);
                 pathView.setShowPathIcons(iconImageNames,iconsTitles);
                 pathView.postInvalidate();
             }
@@ -87,9 +86,33 @@ public class THomeFragment extends Fragment  {
         pathView.addPathIconClickListener(new PathView.TPathIconClickListen() {
             @Override
             public void onPathIconClick(TPathIcon pathIcon) {
-                Log.e("TIKEYC","onPathIconClick:" + pathIcon.getTag());
-                Intent intent = new Intent(getContext(), TImageListActivity.class);
-                startActivity(intent);
+                int tag = (int) pathIcon.getTag();
+                Log.e("TIKEYC","onPathIconClick:" + tag);
+                switch (tag) {
+                    case 0:{
+                        Intent intent = new Intent(getContext(), TImageListActivity.class);
+                        startActivity(intent);
+                    }
+                    break;
+                    case 1:{
+                        Intent intent = new Intent(getContext(), TEchartTypeListActivity.class);
+                        startActivity(intent);
+                    }
+                    break;
+                    case 2:{
+
+                    }
+                    break;
+                    case 3:{
+
+                    }
+                    break;
+                    default:
+                        break;
+                }
+
+
+
             }
         });
     }

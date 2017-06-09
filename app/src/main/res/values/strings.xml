@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TikeycAndroid</string>
+    <string name="title_activity_techart_type_list">TEchartTypeListActivity</string>
 </resources>

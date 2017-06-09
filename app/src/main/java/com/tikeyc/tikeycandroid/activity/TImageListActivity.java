@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.base.TBaseActivity;
 import com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.TNinePlaceGridView;
-import com.tikeyc.tikeycandroid.utils.CircleImageView;
+import com.tikeyc.tikeycandroid.libs.CircleImageView;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;

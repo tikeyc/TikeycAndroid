@@ -50,7 +50,10 @@ public class TScallImageView extends android.support.v7.widget.AppCompatImageVie
         });
     }
 
-    ///////////////
+
+    /**获取每个图片相对于window的位置
+     * @return
+     */
     private List<TRect> getOriginalRects() {
         List<TRect> originalRects = new ArrayList<TRect>();
         int count = ninePlaceGridView.getChildCount();

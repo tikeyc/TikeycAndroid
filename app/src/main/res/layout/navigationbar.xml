@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"></LinearLayout>
     <TextView
+        android:id="@+id/navigationBar_title_tv"
         android:text="标题"
         android:textColor="@android:color/holo_red_light"
         android:gravity="center"

@@ -13,7 +13,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp">
 
-        <com.tikeyc.tikeycandroid.utils.CircleImageView
+        <com.tikeyc.tikeycandroid.libs.CircleImageView
             android:id="@+id/icon_iv"
             android:src="@mipmap/beauty"
             android:layout_width="60dp"
