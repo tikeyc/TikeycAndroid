@@ -14,8 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.activity.TBaiSiBuDeJieActivity;
+import com.tikeyc.tikeycandroid.activity.TWaterFlowActivity;
 import com.tikeyc.tikeycandroid.activity.echart.TEchartTypeListActivity;
 import com.tikeyc.tikeycandroid.activity.TImageListActivity;
+import com.tikeyc.tikeycandroid.base.TBaseFragment;
 import com.tikeyc.tikeycandroid.custom.AnimatorPath.AnimatorPath;
 import com.tikeyc.tikeycandroid.custom.TPathCustomView.PathView;
 import com.tikeyc.tikeycandroid.custom.TPathCustomView.TPathIcon;
@@ -27,9 +30,8 @@ import java.util.ArrayList;
  * Created by public1 on 2017/4/24.
  */
 
-public class THomeFragment extends Fragment  {
+public class THomeFragment extends TBaseFragment {
 
-    private LinearLayout mView;
     private PathView pathView;
 
     private TextView fab;
@@ -40,11 +42,9 @@ public class THomeFragment extends Fragment  {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        mView = (LinearLayout) inflater.inflate(R.layout.home_fragment,container,false);
+    public View createView() {
+        mView = (LinearLayout) View.inflate(getContext(),R.layout.home_fragment,null);
 
         initView();
 
@@ -52,6 +52,7 @@ public class THomeFragment extends Fragment  {
 
         return mView;
     }
+
 
     private void initView() {
         pathView = (PathView) mView.findViewById(R.id.pathView);
@@ -63,10 +64,10 @@ public class THomeFragment extends Fragment  {
         iconImageNames.add(R.mipmap.test3);
         iconImageNames.add(R.mipmap.test4);
         iconImageNames.add(R.mipmap.test5);
-        iconsTitles.add("test1");
-        iconsTitles.add("test2");
+        iconsTitles.add("九宫格");
+        iconsTitles.add("ECharts");
         iconsTitles.add("test3");
-        iconsTitles.add("test4");
+        iconsTitles.add("WaterFlow");
         iconsTitles.add("test5");
         Handler handler = new Handler(){
             @Override
@@ -100,18 +101,18 @@ public class THomeFragment extends Fragment  {
                     }
                     break;
                     case 2:{
-
+                        Intent intent = new Intent(getContext(), TBaiSiBuDeJieActivity.class);
+                        startActivity(intent);
                     }
                     break;
                     case 3:{
-
+                        Intent intent = new Intent(getContext(), TWaterFlowActivity.class);
+                        startActivity(intent);
                     }
                     break;
                     default:
                         break;
                 }
-
-
 
             }
         });

@@ -297,6 +297,7 @@ public class TMainFragmentTabActivity extends FragmentActivity {
                 position = 0;
                 //如果不是在第一页 则回到第一页
                 listener.onTabChanged(TAB_HOME);
+                tabhost.onTabChanged(TAB_HOME);
                 return true;
             } else if (!isExit) {
                 isExit = true;

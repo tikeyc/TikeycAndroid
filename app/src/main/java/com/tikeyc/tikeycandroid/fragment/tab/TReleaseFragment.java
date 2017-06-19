@@ -16,24 +16,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.base.TBaseFragment;
 import com.tikeyc.tikeycandroid.custom.ScrollView.THorizontalListView;
 
 import org.xutils.common.util.DensityUtil;
 
-public class TReleaseFragment extends Fragment {
+public class TReleaseFragment extends TBaseFragment {
 
-    private LinearLayout mView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mView = (LinearLayout) inflater.inflate(R.layout.release_fragment,container,false);
+    @Override
+    public View createView() {
+        mView = (LinearLayout) View.inflate(getContext(), R.layout.release_fragment,null);
 
         initView();
 

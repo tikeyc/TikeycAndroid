@@ -37,7 +37,9 @@
         <activity android:name=".activity.TImageListActivity" />
         <activity android:name=".activity.echart.TEchartTypeListActivity" />
         <activity android:name=".activity.echart.TLineChartActivity" />
-        <activity android:name=".activity.echart.TBarChartActivity"></activity>
+        <activity android:name=".activity.echart.TBarChartActivity" />
+        <activity android:name=".activity.TBaiSiBuDeJieActivity" />
+        <activity android:name=".activity.TWaterFlowActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:textSize="30sp"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="#ff00"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp" />-->
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@mipmap/beauty"
+        android:scaleType="fitXY"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+</LinearLayout>

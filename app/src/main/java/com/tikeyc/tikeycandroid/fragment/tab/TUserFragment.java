@@ -1,27 +1,18 @@
 package com.tikeyc.tikeycandroid.fragment.tab;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ScrollView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.adapter.user.THomeUserAdapter;
-import com.tikeyc.tikeycandroid.bean.THomeUserItem;
+import com.tikeyc.tikeycandroid.base.TBaseFragment;
+import com.tikeyc.tikeycandroid.bean.user.THomeUserItem;
 import com.tikeyc.tikeycandroid.custom.ScrollView.TStretchableListView;
 
 import org.xutils.view.annotation.ViewInject;
@@ -29,9 +20,8 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 
-public class TUserFragment extends Fragment {
+public class TUserFragment extends TBaseFragment {
 
-    private LinearLayout mView;
     @ViewInject(R.id.recyclerView)
     private TStretchableListView recyclerView;
     private THomeUserAdapter homeUserAdapter;
@@ -42,12 +32,9 @@ public class TUserFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        mView = (LinearLayout) inflater.inflate(R.layout.user_fragment,container,false);
+    public View createView() {
+        mView = (LinearLayout) View.inflate(getContext(), R.layout.user_fragment,null);
 
         initView();
 
@@ -58,7 +45,6 @@ public class TUserFragment extends Fragment {
 
         return mView;
     }
-
 
     private void initView() {
         x.view().inject(this,mView);

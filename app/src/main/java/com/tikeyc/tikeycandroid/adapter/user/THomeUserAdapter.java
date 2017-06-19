@@ -1,26 +1,15 @@
 package com.tikeyc.tikeycandroid.adapter.user;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tikeyc.tikeycandroid.R;
-import com.tikeyc.tikeycandroid.bean.THomeUserAttentionItem;
-import com.tikeyc.tikeycandroid.bean.THomeUserItem;
+import com.tikeyc.tikeycandroid.bean.user.THomeUserItem;
 import com.tikeyc.tikeycandroid.custom.ScrollView.THorizontalListView;
 
-import org.xutils.common.util.DensityUtil;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

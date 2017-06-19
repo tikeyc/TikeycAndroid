@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.bean;
+package com.tikeyc.tikeycandroid.bean.user;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 

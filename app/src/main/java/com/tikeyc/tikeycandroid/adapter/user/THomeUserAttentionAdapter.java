@@ -1,12 +1,11 @@
 package com.tikeyc.tikeycandroid.adapter.user;
 
-import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tikeyc.tikeycandroid.R;
-import com.tikeyc.tikeycandroid.bean.THomeUserAttentionItem;
+import com.tikeyc.tikeycandroid.bean.user.THomeUserAttentionItem;
 
 import java.util.List;
 

@@ -16,13 +16,13 @@ import android.widget.TextView;
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.moxun.tagcloudlib.view.TagsAdapter;
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.base.TBaseFragment;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-public class TNewsFragment extends Fragment {
+public class TNewsFragment extends TBaseFragment {
 
-    private LinearLayout mView;
     @ViewInject(R.id.tagCloudView_3D)
     private TagCloudView tagCloudView_3D;
 
@@ -31,11 +31,9 @@ public class TNewsFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        mView = (LinearLayout) inflater.inflate(R.layout.news_fragment,container,false);
+    public View createView() {
+        mView = (LinearLayout) View.inflate(getContext(), R.layout.news_fragment,null);
 
         initView();
 
