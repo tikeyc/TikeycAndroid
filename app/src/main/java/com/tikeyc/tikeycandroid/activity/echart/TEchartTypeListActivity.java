@@ -17,6 +17,8 @@ import org.xutils.common.util.DensityUtil;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
+
 /**
  * Created by public1 on 2017/6/7.
  */
@@ -57,6 +59,7 @@ public class TEchartTypeListActivity extends TBaseActivity {
                     Intent intent = new Intent(TEchartTypeListActivity.this,TBarChartActivity.class);
                     startActivity(intent);
                 }
+                BGASwipeBackHelper.executeForwardAnim(TEchartTypeListActivity.this);
             }
         });
 

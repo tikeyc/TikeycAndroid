@@ -1,1 +1,1 @@
-include ':app', ':gson-2.3', ':picasso-2.5.2', ':EventBus-2.4.0', ':xutils', ':BaseRecyclerViewAdapterHelper', ':facebook-animation-rebound-0.3.8', ':3Dtagcloudlib'
+include ':app', ':3Dtagcloudlib'

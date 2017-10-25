@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_tuser_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <ImageView
         android:id="@+id/parallax"
@@ -25,9 +23,9 @@
         android:layout_height="match_parent">
 
         <!--<com.scwang.smartrefresh.layout.header.ClassicsHeader-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srlAccentColor="@android:color/white"/>-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:srlAccentColor="@android:color/white"/>-->
 
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/scrollView_user"
@@ -75,12 +73,60 @@
 
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                <LinearLayout
                     android:background="@android:color/white"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                </android.support.v7.widget.RecyclerView>
+
+                    <Button
+                        android:text="button1"
+                        android:background="@drawable/logint_button_shape_corner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="button2"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/logint_button_shape_corner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="button3"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/logint_button_shape_corner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="button4"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/logint_button_shape_corner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="button5"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/logint_button_shape_corner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/logout_bt"
+                        android:text="登出"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/logint_button_shape_corner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+
+                </LinearLayout>
+
+
+
 
             </LinearLayout>
 

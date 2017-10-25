@@ -10,12 +10,20 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
     }
 }
 
@@ -24,21 +32,37 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':EventBus-2.4.0')
-    compile project(':picasso-2.5.2')
-    compile project(':gson-2.3')
-    compile project(':xutils')
-    compile project(':BaseRecyclerViewAdapterHelper')
-    compile project(':facebook-animation-rebound-0.3.8')
+    // https://mvnrepository.com/artifact/org.xutils/xutils
+    compile 'org.xutils:xutils:3.5.0'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile 'com.google.code.gson:gson:2.8.1'
+    // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    // https://mvnrepository.com/artifact/de.greenrobot/eventbus
+    compile 'de.greenrobot:eventbus:2.4.1'
+    //https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
     compile project(':3Dtagcloudlib')
     // ECharts - Java类库 http://git.oschina.net/free/ECharts
     // https://mvnrepository.com/artifact/com.github.abel533/ECharts
-//    compile group: 'com.github.abel533', name: 'ECharts', version: '3.0.0.2'
-//    compile 'com.apkfuns.logutils:library:1.5.1.1'
+    //    compile group: 'com.github.abel533', name: 'ECharts', version: '3.0.0.2'
+    //    compile 'com.apkfuns.logutils:library:1.5.1.1'
     //https://github.com/tikeyc/TAndroidEChart
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.android.support:design:25.3.1'
     compile 'com.github.tikeyc:TAndroidEChart:v1.0'
+    //文件下载
+    compile 'com.liulishuo.filedownloader:library:1.6.0'
+    //底部TabBar
+    compile 'com.github.ittianyu:BottomNavigationViewEx:1.2.1'
+    //状态栏状态
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+    //类似iOS的滑动返回界面
+    compile 'cn.bingoogolapple:bga-swipebacklayout:1.1.4@aar'
+    //上下拉刷新
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    //没有使用特殊Header，可以不加这行
     testCompile 'junit:junit:4.12'
 }
