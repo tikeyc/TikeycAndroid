@@ -12,12 +12,17 @@
         layout="@layout/navigationbar">
     </include>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/swipe_refreshLayout"
         android:orientation="vertical"
+        app:srlPrimaryColor="#6077BB"
+        app:srlHeaderHeight="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.scwang.smartrefresh.header.CircleHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -25,6 +30,6 @@
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

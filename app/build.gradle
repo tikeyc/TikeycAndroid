@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.tikeyc.tikeycandroid"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -62,7 +62,14 @@ dependencies {
     compile 'cn.bingoogolapple:bga-swipebacklayout:1.1.4@aar'
     //上下拉刷新
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
-    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     //没有使用特殊Header，可以不加这行
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    // https://mvnrepository.com/artifact/fm.jiecao/jiecaovideoplayer
+    compile group: 'fm.jiecao', name: 'jiecaovideoplayer', version: '5.8.1'
+    // https://mvnrepository.com/artifact/pl.droidsonroids.gif/android-gif-drawable
+    compile group: 'pl.droidsonroids.gif', name: 'android-gif-drawable', version: '1.2.8'
+    // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
+    compile group: 'com.github.bumptech.glide', name: 'glide', version: '3.7.0'
+
     testCompile 'junit:junit:4.12'
 }

@@ -65,7 +65,7 @@ public class THomeFragment extends TBaseFragment {
         iconImageNames.add(R.mipmap.test5);
         iconsTitles.add("九宫格");
         iconsTitles.add("ECharts");
-        iconsTitles.add("test3");
+        iconsTitles.add("百思不得姐");
         iconsTitles.add("WaterFlow");
         iconsTitles.add("test5");
         Handler handler = new Handler(){
