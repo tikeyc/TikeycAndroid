@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tikeyc.tikeycandroid.R;
-import com.tikeyc.tikeycandroid.bean.user.THomeUserAttentionItem;
+import com.tikeyc.tikeycandroid.bean.main1.user.THomeUserAttentionItem;
 
 import java.util.List;
 

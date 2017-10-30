@@ -8,11 +8,19 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.adapter.home.TWaterFlowAdapter;
 import com.tikeyc.tikeycandroid.base.TBaseActivity;
+import com.tikeyc.tikeycandroid.bean.main1.home.TWaterFlowModel;
+import com.tikeyc.tikeycandroid.common.Constants;
 
+import org.xutils.common.Callback;
 import org.xutils.common.util.LogUtil;
+import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -21,8 +29,12 @@ import java.util.List;
 
 public class TWaterFlowActivity extends TBaseActivity {
 
+    @ViewInject(R.id.smartRefreshLayout)
+    private SmartRefreshLayout smartRefreshLayout;
+
     @ViewInject(R.id.recyclerView)
     private RecyclerView recyclerView;
+
     private List<String> listData;
     private TWaterFlowAdapter waterFlowAdapter;
 
@@ -32,41 +44,48 @@ public class TWaterFlowActivity extends TBaseActivity {
 
         setContentView(R.layout.activity_twater_flow);
 
-        initData();
-
         initView();
 
         setListen();
+
+        initData();
     }
 
     private void initData() {
-        listData = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++){
-            listData.add("" + (char) i);
-        }
+
+        smartRefreshLayout.autoRefresh();
 
     }
 
     private void initView() {
         x.view().inject(this);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        int clomu = 2;
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(clomu,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        waterFlowAdapter = new TWaterFlowAdapter(this,listData);
-        recyclerView.setAdapter(waterFlowAdapter);
-
     }
 
     private void setListen() {
-        //添加点击事件
-        waterFlowAdapter.setOnItemClickListener(new TWaterFlowAdapter.OnRecyclerItemClickListener() {
+
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                //Toast.makeText(TWaterFlowActivity.this,"单击了:"+mDatas.get(position),Toast.LENGTH_SHORT).show();
-                waterFlowAdapter.addItem(position,"添加的内容");
-                LogUtil.e("onItemClick: "+position);
+            public void onRefresh(RefreshLayout refreshlayout) {
+                getDataFromNet();
             }
         });
+
+    }
+
+    private void setWaterFlowAdaptetListener() {
+        //添加点击事件
+//        waterFlowAdapter.setOnItemClickListener(new TWaterFlowAdapter.OnRecyclerItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                //Toast.makeText(TWaterFlowActivity.this,"单击了:"+mDatas.get(position),Toast.LENGTH_SHORT).show();
+////                waterFlowAdapter.addItem(position,null);
+//                LogUtil.e("onItemClick: "+position);
+//            }
+//        });
 
         //设置长按事件
         waterFlowAdapter.setOnItemLongClickListener(new TWaterFlowAdapter.onRecyclerItemLongClickListener() {
@@ -77,6 +96,74 @@ public class TWaterFlowActivity extends TBaseActivity {
                 LogUtil.e("onItemLongClick: "+position);
             }
         });
+    }
+
+
+    private void getDataFromNet() {
+
+        final RequestParams params = new RequestParams(Constants.PIC_SEX);
+        x.http().get(params, new Callback.CacheCallback<String >() {
+
+            @Override
+            public boolean onCache(String result) {
+                paramsData(result);
+//                getDataFromNet();
+                return true;
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                LogUtil.e("onSuccess"+result);
+//                Log.e("TAG",result);
+                //
+                paramsData(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                LogUtil.e("onError"+ex.getMessage());
+                //刷新UI
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.e("onCancelled"+cex.getMessage());
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.e("onFinished");
+                smartRefreshLayout.finishRefresh();
+            }
+        });
+    }
+
+    private void paramsData(String result) {
+
+        TWaterFlowModel waterFlowModel = new Gson().fromJson(result,TWaterFlowModel.class);
+
+        if (waterFlowAdapter == null) {
+            List<TWaterFlowModel.ResultsBean> resultsBeanList = waterFlowModel.getResults();
+            resultsBeanList.addAll(resultsBeanList);
+            resultsBeanList.addAll(resultsBeanList);
+            resultsBeanList.addAll(resultsBeanList);
+            resultsBeanList.addAll(resultsBeanList);
+            waterFlowAdapter = new TWaterFlowAdapter(this,resultsBeanList);
+            setWaterFlowAdaptetListener();
+            recyclerView.setAdapter(waterFlowAdapter);
+        } else {
+            List<TWaterFlowModel.ResultsBean> resultsBeanList = waterFlowModel.getResults();
+            resultsBeanList.addAll(resultsBeanList);
+            resultsBeanList.addAll(resultsBeanList);
+            resultsBeanList.addAll(resultsBeanList);
+            resultsBeanList.addAll(resultsBeanList);
+            waterFlowAdapter.list = resultsBeanList;
+
+            waterFlowAdapter.notifyDataSetChanged();
+        }
+
+
     }
 
 

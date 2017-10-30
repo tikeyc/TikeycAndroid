@@ -1,10 +1,7 @@
 package com.tikeyc.tikeycandroid.adapter.home;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,20 +10,20 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.squareup.picasso.Callback;
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.tikeyc.tikeycandroid.R;
-import com.tikeyc.tikeycandroid.bean.home.THomeBaiSiBuDeJieModel;
+import com.tikeyc.tikeycandroid.bean.main1.home.THomeBaiSiBuDeJieModel;
 import com.tikeyc.tikeycandroid.libs.CircleImageView;
+import com.tikeyc.tnineplacegridviewlibrary.TNinePlaceGridView.TScallImageView;
 
 import org.xutils.common.util.DensityUtil;
-import org.xutils.common.util.LogUtil;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import pl.droidsonroids.gif.GifImageView;
 
@@ -36,7 +33,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class TBaiSiBuDeJieListAdapter extends BaseMultiItemQuickAdapter<THomeBaiSiBuDeJieModel.ListBean, BaseViewHolder> {
 
-
+    public int np;//记录本次数据的时间（THomeBaiSiBuDeJieModel.getInfo().getNp()）,用于判断时候增加或更新列表数据
 
     /**
      * Same as QuickAdapter#QuickAdapter(Context,int) but with
@@ -87,16 +84,28 @@ public class TBaiSiBuDeJieListAdapter extends BaseMultiItemQuickAdapter<THomeBai
 //                viewHolder.iv_image_icon.setImageResource(R.drawable.bg_item);
                 int height = audioItem.getImage().getHeight() <= DensityUtil.getScreenHeight()*0.75?audioItem.getImage().getHeight() : (int)(DensityUtil.getScreenHeight()*0.75);
 
+                TScallImageView iv_image_icon = (TScallImageView) helper.getView(R.id.iv_image_icon);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.getScreenWidth(),height);
-                helper.getView(R.id.iv_image_icon).setLayoutParams(params);
+                iv_image_icon.setLayoutParams(params);
                 if (audioItem.getImage() != null && audioItem.getImage().getBig() != null && audioItem.getImage().getBig().size() > 0) {
 //                    x.image().bind(viewHolder.iv_image_icon,audioItem.getImage().getBig().get(0));
 //                    Glide.with(context).load(audioItem.getImage().getBig().get(0)).placeholder(null)
 //                            .error(null).diskCacheStrategy(DiskCacheStrategy.ALL).
 //                            into(viewHolder.iv_image_icon);
-                    ImageView iv_image_icon = (ImageView) helper.getView(R.id.iv_image_icon);
-                    Picasso.with(mContext).load(audioItem.getImage().getBig().get(0)).placeholder(null).into(iv_image_icon);
+//                    Picasso.with(mContext).load(audioItem.getImage().getBig().get(0)).placeholder(null).memoryPolicy(MemoryPolicy.NO_CACHE,MemoryPolicy.NO_STORE).into(iv_image_icon);
+                    ImageOptions imageOptions = new ImageOptions.Builder()
+                            .setImageScaleType(ImageView.ScaleType.FIT_CENTER)
+                            .build();
+                    x.image().bind(iv_image_icon,audioItem.getImage().getBig().get(0),imageOptions);
                 }
+
+                //设置点击放大全屏
+                iv_image_icon.imageId = audioItem.getImage().getBig().get(0);
+                iv_image_icon.currentIndex = 1;
+                ArrayList<Object> imageIds = new ArrayList<Object>();
+                imageIds.add(audioItem.getImage().getBig().get(0));
+                iv_image_icon.imageIds = imageIds;
+                iv_image_icon.ninePlaceGridView = (ViewGroup) iv_image_icon.getParent();
             }
             break;
             case THomeBaiSiBuDeJieModel.ListBean.TYPE_GIF:{

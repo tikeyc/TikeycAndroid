@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
@@ -17,14 +16,12 @@ import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.adapter.user.THomeUserAdapter;
 import com.tikeyc.tikeycandroid.base.TBaseFragment;
-import com.tikeyc.tikeycandroid.bean.user.THomeUserItem;
+import com.tikeyc.tikeycandroid.bean.main1.user.THomeUserItem;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
-
-import static android.R.attr.scrollY;
 
 public class TUserFragment extends TBaseFragment {
 

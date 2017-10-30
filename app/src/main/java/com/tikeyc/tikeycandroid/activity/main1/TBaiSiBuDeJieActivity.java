@@ -1,8 +1,6 @@
 package com.tikeyc.tikeycandroid.activity.main1;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -13,18 +11,14 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.adapter.home.TBaiSiBuDeJieListAdapter;
 import com.tikeyc.tikeycandroid.base.TBaseActivity;
-import com.tikeyc.tikeycandroid.bean.home.THomeBaiSiBuDeJieModel;
+import com.tikeyc.tikeycandroid.bean.main1.home.THomeBaiSiBuDeJieModel;
 import com.tikeyc.tikeycandroid.common.Constants;
 
-import org.json.JSONException;
 import org.xutils.common.Callback;
 import org.xutils.common.util.LogUtil;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
@@ -148,8 +142,24 @@ public class TBaiSiBuDeJieActivity extends TBaseActivity {
             listBean.setItemType(itemViewTye);
         }
 
-        listAdapter = new TBaiSiBuDeJieListAdapter(homeBaiSiBuDeJieModel.getList());
-        recyclerView.setAdapter(listAdapter);
+        if (listAdapter == null) {
+            listAdapter = new TBaiSiBuDeJieListAdapter(homeBaiSiBuDeJieModel.getList());
+            listAdapter.np = homeBaiSiBuDeJieModel.getInfo().getNp();
+            recyclerView.setAdapter(listAdapter);
+        } else {
+            int lastNp = listAdapter.np;
+            int currentNp = homeBaiSiBuDeJieModel.getInfo().getNp();
+
+            if (lastNp != currentNp) {
+                listAdapter.addData(0,homeBaiSiBuDeJieModel.getList());
+            } else {
+                listAdapter.replaceData(homeBaiSiBuDeJieModel.getList());
+            }
+
+            listAdapter.notifyDataSetChanged();
+        }
+
+
 
     }
 

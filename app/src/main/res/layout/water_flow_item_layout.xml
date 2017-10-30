@@ -13,7 +13,7 @@
         <!--android:background="#ff00"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="200dp" />-->
-    <ImageView
+    <com.tikeyc.tnineplacegridviewlibrary.TNinePlaceGridView.TScallImageView
         android:id="@+id/imageView"
         android:src="@mipmap/beauty"
         android:scaleType="fitXY"

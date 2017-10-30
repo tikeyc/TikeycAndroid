@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.bean.home;
+package com.tikeyc.tikeycandroid.bean.main1.home;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 

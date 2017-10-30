@@ -1,4 +1,4 @@
-package com.tikeyc.tikeycandroid.bean.user;
+package com.tikeyc.tikeycandroid.bean.main1.user;
 
 /**
  * Created by public1 on 2017/5/31.

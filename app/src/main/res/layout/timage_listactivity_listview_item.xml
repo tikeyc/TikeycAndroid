@@ -30,7 +30,7 @@
 
     </RelativeLayout>
 
-    <com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.TNinePlaceGridView
+    <com.tikeyc.tnineplacegridviewlibrary.TNinePlaceGridView.TNinePlaceGridView
         android:id="@+id/ninePlaceGridView"
         android:layout_below="@+id/userInfoSuperView"
         android:layout_marginLeft="58dp"
@@ -39,7 +39,7 @@
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.TNinePlaceGridView>
+    </com.tikeyc.tnineplacegridviewlibrary.TNinePlaceGridView.TNinePlaceGridView>
 
 
 </RelativeLayout>

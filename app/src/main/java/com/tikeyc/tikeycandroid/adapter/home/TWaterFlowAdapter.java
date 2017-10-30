@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tikeyc.tikeycandroid.R;
+import com.tikeyc.tikeycandroid.bean.main1.home.TWaterFlowModel;
+import com.tikeyc.tnineplacegridviewlibrary.TNinePlaceGridView.TScallImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,32 +27,32 @@ public class TWaterFlowAdapter extends RecyclerView.Adapter<TWaterFlowAdapter.My
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
-        ImageView imageView;
+        TScallImageView imageView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 //            textView = (TextView) itemView.findViewById(R.id.textView);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            imageView = (TScallImageView) itemView.findViewById(R.id.imageView);
         }
     }
 
     private Context context;
 
-    private List<String> list;//数据
+    public List<TWaterFlowModel.ResultsBean> list;//数据
     private List<Integer> heightList;//装产出的随机数
 
 
     private OnRecyclerItemClickListener mOnItemClickListener;//单击事件
     private onRecyclerItemLongClickListener mOnItemLongClickListener;//长按事件
 
-    public TWaterFlowAdapter(Context context, List<String> list) {
+    public TWaterFlowAdapter(Context context, List<TWaterFlowModel.ResultsBean> list) {
         this.context = context;
         this.list = list;
 
         //记录为每个控件产生的随机高度,避免滑回到顶部出现空白
         heightList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            int height = new Random().nextInt(400) + 200;//[200,600)的随机数
+            int height = new Random().nextInt(400) + 300;//[300,700)的随机数
             heightList.add(height);
         }
     }
@@ -64,15 +67,23 @@ public class TWaterFlowAdapter extends RecyclerView.Adapter<TWaterFlowAdapter.My
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         //填充数据
-        holder.imageView.setImageResource(R.mipmap.beauty);
+//        holder.imageView.setImageResource(R.mipmap.beauty);
+        Picasso.with(context).load(list.get(position).getUrl()).into(holder.imageView);
         //由于需要实现瀑布流的效果,所以就需要动态的改变控件的高度了
         ViewGroup.LayoutParams params = holder.imageView.getLayoutParams();
         params.height = heightList.get(position);
         holder.imageView.setLayoutParams(params);
 
+        //设置点击放大全屏
+        holder.imageView.imageId = list.get(position).getUrl();
+        holder.imageView.currentIndex = position;
+        ArrayList<Object> imageIds = new ArrayList<Object>();
+        imageIds.add(list.get(position).getUrl());
+        holder.imageView.imageIds = imageIds;
+        holder.imageView.ninePlaceGridView = (ViewGroup) holder.imageView.getParent();
 
-        //设置单击事件
-        if(mOnItemClickListener !=null){
+        //设置单击事件 如果外部设置了该单机事件，则点击图片全屏放大浏览功能将被覆盖
+        if(mOnItemClickListener != null){
             holder.imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -132,7 +143,7 @@ public class TWaterFlowAdapter extends RecyclerView.Adapter<TWaterFlowAdapter.My
     /**
      * 向指定位置添加元素
      */
-    public void addItem(int position, String value) {
+    public void addItem(int position, TWaterFlowModel.ResultsBean value) {
         if(position > list.size()) {
             position = list.size();
         }
@@ -151,12 +162,12 @@ public class TWaterFlowAdapter extends RecyclerView.Adapter<TWaterFlowAdapter.My
     /**
      * 移除指定位置元素
      */
-    public String removeItem(int position) {
+    public TWaterFlowModel.ResultsBean removeItem(int position) {
         if(position > list.size()-1) {
             return null;
         }
         heightList.remove(position);//删除添加的高度
-        String value = list.remove(position);//所以还需要手动在集合中删除一次
+        TWaterFlowModel.ResultsBean value = list.remove(position);//所以还需要手动在集合中删除一次
         notifyItemRemoved(position);//通知删除了数据,但是没有删除list集合中的数据
         return value;
     }

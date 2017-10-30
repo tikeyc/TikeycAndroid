@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tikeyc.tikeycandroid.R;
-import com.tikeyc.tikeycandroid.bean.user.THomeUserItem;
+import com.tikeyc.tikeycandroid.bean.main1.user.THomeUserItem;
 import com.tikeyc.tikeycandroid.custom.ScrollView.THorizontalListView;
 
 import java.util.List;

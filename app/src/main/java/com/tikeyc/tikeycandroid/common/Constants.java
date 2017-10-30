@@ -20,4 +20,10 @@ public class Constants {
      *
      * */
     public static final String AUDIO_NET_URL = "http://s.budejie.com/topic/list/jingxuan/1/budejie-android-6.2.8/0-20.json?market=baidu&udid=86342502659959&appname=baisibudejie&os=4.2.2&client=android&visiting=&mac=98%3Ac%3Af5%3A4b%3A72%3A6d&ver=6.2.2";
+
+
+    /**
+     * 美女福利
+     */
+    public static final String PIC_SEX = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1";
 }

@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.base.TBaseActivity;
-import com.tikeyc.tikeycandroid.custom.TNinePlaceGridView.TNinePlaceGridView;
 import com.tikeyc.tikeycandroid.libs.CircleImageView;
+import com.tikeyc.tnineplacegridviewlibrary.TNinePlaceGridView.TNinePlaceGridView;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -40,9 +40,9 @@ public class TImageListActivity extends TBaseActivity {
 
     private void init() {
 
-        List<List<Integer>> imageNames2D = new ArrayList<List<Integer>>();
+        List<List<Object>> imageNames2D = new ArrayList<List<Object>>();
         for (int i = 0; i < 30; i++) {
-            ArrayList<Integer> imageNames = new ArrayList<Integer>();
+            ArrayList<Object> imageNames = new ArrayList<Object>();
             Random random = new Random();
             for (int j = 0; j <= random.nextInt(8); j++) {
                 if (j%2 == 0) {
@@ -81,7 +81,7 @@ public class TImageListActivity extends TBaseActivity {
     private class ListViewAdapter extends BaseAdapter {
 
         private Context context;
-        public List<List<Integer>> imageNames2D;
+        public List<List<Object>> imageNames2D;
 
         public ListViewAdapter(Context context) {
             this.context = context;
@@ -124,7 +124,7 @@ public class TImageListActivity extends TBaseActivity {
             } else  {
                 viewHelper = (ViewHelper) view.getTag();
             }
-            List<Integer> imageNames = this.imageNames2D.get(i);
+            List<Object> imageNames = this.imageNames2D.get(i);
             viewHelper.ninePlaceGridView.setImageNames(imageNames);
 
             return view;
