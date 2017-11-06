@@ -24,8 +24,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/notitle.NoActionBar">
-        <activity
-            android:name=".activity.main1.TLuanchActivity">
+        <activity android:name=".activity.main1.TLuanchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,9 +39,10 @@
         <activity android:name=".activity.echart.TBarChartActivity" />
         <activity
             android:name=".activity.main1.TBaiSiBuDeJieActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name=".activity.main1.TWaterFlowActivity" />
-        <activity android:name=".activity.main.IndexMainActivity"></activity>
+        <activity android:name=".activity.main.IndexMainActivity" />
+        <activity android:name=".activity.main.PlayLiveActivity"></activity>
     </application>
 
 </manifest>

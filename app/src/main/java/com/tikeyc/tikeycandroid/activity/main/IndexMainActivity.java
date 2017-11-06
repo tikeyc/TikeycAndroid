@@ -1,14 +1,10 @@
 package com.tikeyc.tikeycandroid.activity.main;
 
 import android.app.Fragment;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -19,11 +15,10 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.base.TBaseActivity;
 import com.tikeyc.tikeycandroid.fragment.main.tab.HomeFragment;
-import com.tikeyc.tikeycandroid.fragment.main.tab.Test1Fragment;
+import com.tikeyc.tikeycandroid.fragment.main.tab.BannerFragment;
 import com.tikeyc.tikeycandroid.fragment.main.tab.Test2Fragment;
 import com.tikeyc.tikeycandroid.fragment.main.tab.UserFragment;
 
-import org.xutils.common.util.LogUtil;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -34,7 +29,7 @@ public class IndexMainActivity extends TBaseActivity {
     private enum TabFragment {
 
         home(R.id.navigationview_home, HomeFragment.class),
-        test1(R.id.navigationview_test1, Test1Fragment.class),
+        test1(R.id.navigationview_live, BannerFragment.class),
         test2(R.id.navigationview_test2, Test2Fragment.class),
         test3(R.id.navigationview_user, UserFragment.class);
 
@@ -91,7 +86,7 @@ public class IndexMainActivity extends TBaseActivity {
                 .replace(R.id.content,TabFragment.from(item.getItemId()).fragment())
                 .commit();
 
-        if (item.getItemId() == R.id.navigationview_user) {
+        if (item.getItemId() == R.id.navigationview_user || item.getItemId() == R.id.navigationview_live) {
             navigationBar.setVisibility(View.GONE);
         } else {
             navigationBar.setVisibility(View.VISIBLE);

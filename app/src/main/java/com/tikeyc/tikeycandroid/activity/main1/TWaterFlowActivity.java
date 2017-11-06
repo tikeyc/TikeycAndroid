@@ -11,6 +11,8 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.tikeyc.tikeycandroid.R;
 import com.tikeyc.tikeycandroid.adapter.home.TWaterFlowAdapter;
@@ -37,6 +39,7 @@ public class TWaterFlowActivity extends TBaseActivity {
 
     private List<String> listData;
     private TWaterFlowAdapter waterFlowAdapter;
+    private int requestPage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,15 @@ public class TWaterFlowActivity extends TBaseActivity {
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
+                requestPage++;
+                getDataFromNet();
+            }
+        });
+
+        smartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                requestPage++;
                 getDataFromNet();
             }
         });
@@ -101,7 +113,7 @@ public class TWaterFlowActivity extends TBaseActivity {
 
     private void getDataFromNet() {
 
-        final RequestParams params = new RequestParams(Constants.PIC_SEX);
+        final RequestParams params = new RequestParams(Constants.getPIC_SEX(15,requestPage));
         x.http().get(params, new Callback.CacheCallback<String >() {
 
             @Override
@@ -135,6 +147,7 @@ public class TWaterFlowActivity extends TBaseActivity {
             public void onFinished() {
                 LogUtil.e("onFinished");
                 smartRefreshLayout.finishRefresh();
+                smartRefreshLayout.finishLoadmore();
             }
         });
     }
@@ -143,23 +156,24 @@ public class TWaterFlowActivity extends TBaseActivity {
 
         TWaterFlowModel waterFlowModel = new Gson().fromJson(result,TWaterFlowModel.class);
 
+        if (waterFlowModel.isError() || waterFlowModel == null || waterFlowModel.getResults() == null) return;
+
         if (waterFlowAdapter == null) {
             List<TWaterFlowModel.ResultsBean> resultsBeanList = waterFlowModel.getResults();
-            resultsBeanList.addAll(resultsBeanList);
-            resultsBeanList.addAll(resultsBeanList);
-            resultsBeanList.addAll(resultsBeanList);
-            resultsBeanList.addAll(resultsBeanList);
             waterFlowAdapter = new TWaterFlowAdapter(this,resultsBeanList);
             setWaterFlowAdaptetListener();
             recyclerView.setAdapter(waterFlowAdapter);
         } else {
             List<TWaterFlowModel.ResultsBean> resultsBeanList = waterFlowModel.getResults();
-            resultsBeanList.addAll(resultsBeanList);
-            resultsBeanList.addAll(resultsBeanList);
-            resultsBeanList.addAll(resultsBeanList);
-            resultsBeanList.addAll(resultsBeanList);
-            waterFlowAdapter.list = resultsBeanList;
+            List currentList = waterFlowAdapter.list;
 
+            if (smartRefreshLayout.getState() == RefreshState.Loading) {//上拉加载
+                currentList.addAll(resultsBeanList);
+            } else {
+                currentList.addAll(0,resultsBeanList);//下拉加载
+            }
+
+            waterFlowAdapter.setList(currentList);
             waterFlowAdapter.notifyDataSetChanged();
         }
 

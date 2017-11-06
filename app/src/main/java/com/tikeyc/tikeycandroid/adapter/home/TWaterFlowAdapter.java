@@ -47,6 +47,10 @@ public class TWaterFlowAdapter extends RecyclerView.Adapter<TWaterFlowAdapter.My
 
     public TWaterFlowAdapter(Context context, List<TWaterFlowModel.ResultsBean> list) {
         this.context = context;
+        setList(list);
+    }
+
+    public void setList(List<TWaterFlowModel.ResultsBean> list) {
         this.list = list;
 
         //记录为每个控件产生的随机高度,避免滑回到顶部出现空白

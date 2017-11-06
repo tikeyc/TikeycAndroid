@@ -14,6 +14,19 @@ public class Constants {
      */
     public static final String VIDEO_NET_URL = "http://api.m.mtime.cn/PageSubArea/TrailerList.api";
 
+    /**
+     * 视频直播json数据接口
+     *
+     * 映客直播列表：http://116.211.167.106/api/live/aggregation?uid=133825214&interest=1
+     */
+    public static final String YINGKE_VIDEO_NET_URL = "http://116.211.167.106/api/live/aggregation?uid=133825214&interest=1";
+
+
+    /**
+     * 视频直播json数据接口
+     *
+     */
+    public static final String LIVE_VIDEO_NET_URL = "http://appdemo.download.ks-cdn.com:8882/api/GetLiveUrl/2017-01-01?Option=1";
 
     /**
      * 来自百思不得姐
@@ -24,6 +37,15 @@ public class Constants {
 
     /**
      * 美女福利
+     * http://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/1
      */
-    public static final String PIC_SEX = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1";
+    public static final String PIC_SEX = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/";
+    /**
+     * @param number 一页请求的个数
+     * @param page 请求第几页
+     * @return
+     */
+    public static String getPIC_SEX(int number, int page) {
+        return PIC_SEX + number + "/" + page;
+    }
 }

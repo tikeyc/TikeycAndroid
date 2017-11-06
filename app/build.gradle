@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.tikeyc.tikeycandroid"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -65,12 +65,22 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     //没有使用特殊Header，可以不加这行
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
-    // https://mvnrepository.com/artifact/fm.jiecao/jiecaovideoplayer
-    compile group: 'fm.jiecao', name: 'jiecaovideoplayer', version: '5.8.1'
+    // https://mvnrepository.com/artifact/cn.jzvd/jiaozivideoplayer
+    compile group: 'cn.jzvd', name: 'jiaozivideoplayer', version: '6.1.1'
     // https://mvnrepository.com/artifact/pl.droidsonroids.gif/android-gif-drawable
     compile group: 'pl.droidsonroids.gif', name: 'android-gif-drawable', version: '1.2.8'
     // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
     compile group: 'com.github.bumptech.glide', name: 'glide', version: '3.7.0'
-
+    //图片轮播控件https://github.com/youth5201314/banner
+    compile 'com.youth.banner:banner:1.4.10'
+    //https://github.com/jjdxmashl/jjdxm_ijkplayer
+    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.6'
+    //compile 'com.dou361.ijkplayer-armv7a:jjdxm-ijkplayer-armv7a:1.0.0' 在jjdxm-ijkplayer中默认加入了armv7a的了
+    compile 'com.dou361.ijkplayer-armv5:jjdxm-ijkplayer-armv5:1.0.0'
+    compile 'com.dou361.ijkplayer-arm64:jjdxm-ijkplayer-arm64:1.0.0'
+    compile 'com.dou361.ijkplayer-x86:jjdxm-ijkplayer-x86:1.0.0'
+    compile 'com.dou361.ijkplayer-x86_64:jjdxm-ijkplayer-x86_64:1.0.0'
+    //https://github.com/jjdxmashl/jjdxm_baseutils
+    compile 'com.dou361.baseutils:jjdxm-baseutils:1.0.6'
     testCompile 'junit:junit:4.12'
 }

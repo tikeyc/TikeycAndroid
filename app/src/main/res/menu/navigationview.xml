@@ -3,25 +3,25 @@
 
     <item
         android:id="@+id/navigationview_home"
-        android:title="home"
+        android:title="Home"
         android:icon="@drawable/ic_index_home">
     </item>
 
     <item
-        android:id="@+id/navigationview_test1"
-        android:title="test1"
+        android:id="@+id/navigationview_live"
+        android:title="Live"
         android:icon="@drawable/ic_index_dashboard">
     </item>
 
     <item
         android:id="@+id/navigationview_test2"
-        android:title="test2"
+        android:title="Test2"
         android:icon="@drawable/ic_index_notifications">
     </item>
 
     <item
         android:id="@+id/navigationview_user"
-        android:title="user"
+        android:title="User"
         android:icon="@mipmap/tab_user_normal">
     </item>
 

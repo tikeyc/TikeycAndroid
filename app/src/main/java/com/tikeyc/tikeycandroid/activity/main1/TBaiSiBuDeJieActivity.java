@@ -20,7 +20,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import cn.jzvd.JZVideoPlayer;
 
 
 public class TBaiSiBuDeJieActivity extends TBaseActivity {
@@ -51,7 +51,8 @@ public class TBaiSiBuDeJieActivity extends TBaseActivity {
 
         navigationBar_title_tv.setText("百思不得姐");
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
     }
 
@@ -89,7 +90,7 @@ public class TBaiSiBuDeJieActivity extends TBaseActivity {
             public boolean onCache(String result) {
                 paramsData(result);
 //                getDataFromNet();
-                return true;
+                return false;// true: 信任缓存数据, 不在发起网络请求; false不信任缓存数据.
             }
 
             @Override
@@ -123,6 +124,7 @@ public class TBaiSiBuDeJieActivity extends TBaseActivity {
     private void paramsData(String result) {
 
         THomeBaiSiBuDeJieModel homeBaiSiBuDeJieModel = new Gson().fromJson(result, THomeBaiSiBuDeJieModel.class);
+        if (homeBaiSiBuDeJieModel == null) return;
 
         for (THomeBaiSiBuDeJieModel.ListBean listBean : homeBaiSiBuDeJieModel.getList()) {
             //video,text,image,gif,ad
@@ -166,7 +168,7 @@ public class TBaiSiBuDeJieActivity extends TBaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (JCVideoPlayer.backPress()) {
+        if (JZVideoPlayer.backPress()) {
             return;
         }
         super.onBackPressed();
@@ -174,7 +176,7 @@ public class TBaiSiBuDeJieActivity extends TBaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        JCVideoPlayer.releaseAllVideos();
+        JZVideoPlayer.releaseAllVideos();
     }
 
 }

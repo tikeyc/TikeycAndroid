@@ -24,7 +24,8 @@ import org.xutils.x;
 import java.util.ArrayList;
 import java.util.List;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
+import cn.jzvd.JZVideoPlayerStandard;
 import pl.droidsonroids.gif.GifImageView;
 
 /**
@@ -62,8 +63,8 @@ public class TBaiSiBuDeJieListAdapter extends BaseMultiItemQuickAdapter<THomeBai
                 bindData(helper,audioItem);
                 //第一个参数是视频地址，第二个是显示封面地址，第三个是标题
                 THomeBaiSiBuDeJieModel.ListBean.VideoBean videoBean = audioItem.getVideo();
-                JCVideoPlayerStandard jcVideoPlayerStandard = helper.getView(R.id.jcv_videoplayer);
-                jcVideoPlayerStandard.setUp(videoBean.getVideo().get(0), JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"");
+                JZVideoPlayerStandard jcVideoPlayerStandard = helper.getView(R.id.jcv_videoplayer);
+                jcVideoPlayerStandard.setUp(videoBean.getVideo().get(0), JZVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"");
                 Picasso.with(mContext).load(videoBean.getThumbnail().get(0)).into(jcVideoPlayerStandard.thumbImageView);
                 TextView tv_play_name = helper.getView(R.id.tv_play_name);
                 tv_play_name.setText(videoBean.getPlaycount() + "次播放");

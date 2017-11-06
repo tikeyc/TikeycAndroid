@@ -1,6 +1,10 @@
 package com.tikeyc.tikeycandroid.myApplication;
 
 import android.app.Application;
+import android.os.Handler;
+
+import com.dou361.baseutils.utils.LogType;
+import com.dou361.baseutils.utils.UtilsManager;
 
 import org.xutils.x;
 
@@ -19,6 +23,7 @@ public class MyApplication extends Application {
         //初始化xUtils
         x.Ext.init(this);
 
+
         /**
          * 必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回
          * 第一个参数：应用程序上下文
@@ -26,6 +31,13 @@ public class MyApplication extends Application {
          */
         BGASwipeBackHelper.init(this, null);
 
+
+        /** 初始化sdk */
+        UtilsManager.init(this, "", new Handler(), Thread.currentThread());
+        /** 设置debug模式，默认为false为正式环境不输出日志 */
+        UtilsManager.getInstance().setDebugEnv(true);
+        /** 设置日志输出等级 */
+        UtilsManager.getInstance().setLogLevel(LogType.LEVEL_ERROR);
 
     }
 

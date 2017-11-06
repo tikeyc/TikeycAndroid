@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.tikeyc.tikeycandroid.libs.CircleImageView
+        android:id="@+id/portrait_head_iv"
+        android:src="@mipmap/glenceluanch"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:id="@+id/nick_tv"
+        android:text="昵称"
+        android:layout_toRightOf="@+id/portrait_head_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/city_tv"
+        android:text="城市"
+        android:layout_toRightOf="@+id/portrait_head_iv"
+        android:layout_alignBottom="@+id/portrait_head_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/online_users_title_tv"
+        android:text="在看"
+        android:textSize="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/portrait_head_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/online_users_tv"
+        android:text="123456"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_toLeftOf="@+id/online_users_title_tv"
+        android:layout_alignBottom="@+id/portrait_head_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <ImageView
+        android:id="@+id/show_portrait_iv"
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+
+
+
+</RelativeLayout>
