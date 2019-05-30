@@ -28,7 +28,7 @@ public class TEchartTypeListActivity extends TBaseActivity {
     static final String LINECHART = "lineChart";
     static final String BARCHART = "barChart";
 
-    private String[] chartTypes = {LINECHART,BARCHART};
+    private String[] chartTypes = {LINECHART,BARCHART, "test"};
 
     @ViewInject(R.id.listView)
     private ListView listView;
@@ -57,6 +57,9 @@ public class TEchartTypeListActivity extends TBaseActivity {
 
                 } else if (BARCHART.equals(chartType)) {
                     Intent intent = new Intent(TEchartTypeListActivity.this,TBarChartActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(TEchartTypeListActivity.this,MainWebViewActivity.class);
                     startActivity(intent);
                 }
                 BGASwipeBackHelper.executeForwardAnim(TEchartTypeListActivity.this);

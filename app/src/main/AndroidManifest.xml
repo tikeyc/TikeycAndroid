@@ -42,7 +42,8 @@
             android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name=".activity.main1.TWaterFlowActivity" />
         <activity android:name=".activity.main.IndexMainActivity" />
-        <activity android:name=".activity.main.PlayLiveActivity"></activity>
+        <activity android:name=".activity.main.PlayLiveActivity" />
+        <activity android:name=".activity.echart.MainWebViewActivity"></activity>
     </application>
 
 </manifest>

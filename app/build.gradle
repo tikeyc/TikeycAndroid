@@ -33,38 +33,22 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     // https://mvnrepository.com/artifact/org.xutils/xutils
-    compile 'org.xutils:xutils:3.5.0'
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
-    compile 'com.google.code.gson:gson:2.8.1'
     // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
-    compile 'com.squareup.picasso:picasso:2.5.2'
     // https://mvnrepository.com/artifact/de.greenrobot/eventbus
-    compile 'de.greenrobot:eventbus:2.4.1'
     //https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
     compile project(':3Dtagcloudlib')
     // ECharts - Java类库 http://git.oschina.net/free/ECharts
     // https://mvnrepository.com/artifact/com.github.abel533/ECharts
     //    compile group: 'com.github.abel533', name: 'ECharts', version: '3.0.0.2'
     //    compile 'com.apkfuns.logutils:library:1.5.1.1'
     //https://github.com/tikeyc/TAndroidEChart
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.github.tikeyc.TNinePlaceGridView_Android:tnineplacegridviewlibrary:v1.1.1'
-    compile 'com.github.tikeyc:TAndroidEChart:v1.0'
     //文件下载
-    compile 'com.liulishuo.filedownloader:library:1.6.0'
     //底部TabBar
-    compile 'com.github.ittianyu:BottomNavigationViewEx:1.2.1'
     //状态栏状态
-    compile 'com.jaeger.statusbarutil:library:1.4.0'
     //类似iOS的滑动返回界面
-    compile 'cn.bingoogolapple:bga-swipebacklayout:1.1.4@aar'
     //上下拉刷新
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     //没有使用特殊Header，可以不加这行
-    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     // https://mvnrepository.com/artifact/cn.jzvd/jiaozivideoplayer
     compile group: 'cn.jzvd', name: 'jiaozivideoplayer', version: '6.1.1'
     // https://mvnrepository.com/artifact/pl.droidsonroids.gif/android-gif-drawable
@@ -72,15 +56,31 @@ dependencies {
     // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
     compile group: 'com.github.bumptech.glide', name: 'glide', version: '3.7.0'
     //图片轮播控件https://github.com/youth5201314/banner
-    compile 'com.youth.banner:banner:1.4.10'
     //https://github.com/jjdxmashl/jjdxm_ijkplayer
-    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.6'
     //compile 'com.dou361.ijkplayer-armv7a:jjdxm-ijkplayer-armv7a:1.0.0' 在jjdxm-ijkplayer中默认加入了armv7a的了
+    //https://github.com/jjdxmashl/jjdxm_baseutils
+    compile 'org.xutils:xutils:3.5.0'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'de.greenrobot:eventbus:2.4.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.github.tikeyc.TNinePlaceGridView_Android:tnineplacegridviewlibrary:v1.1.1'
+    compile 'com.github.tikeyc:TAndroidEChart:1.3.1'
+    compile 'com.liulishuo.filedownloader:library:1.6.0'
+    compile 'com.github.ittianyu:BottomNavigationViewEx:1.2.1'
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+    compile 'cn.bingoogolapple:bga-swipebacklayout:1.1.4@aar'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.6'
     compile 'com.dou361.ijkplayer-armv5:jjdxm-ijkplayer-armv5:1.0.0'
     compile 'com.dou361.ijkplayer-arm64:jjdxm-ijkplayer-arm64:1.0.0'
     compile 'com.dou361.ijkplayer-x86:jjdxm-ijkplayer-x86:1.0.0'
     compile 'com.dou361.ijkplayer-x86_64:jjdxm-ijkplayer-x86_64:1.0.0'
-    //https://github.com/jjdxmashl/jjdxm_baseutils
     compile 'com.dou361.baseutils:jjdxm-baseutils:1.0.6'
     testCompile 'junit:junit:4.12'
 }
